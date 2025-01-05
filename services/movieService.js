@@ -10,3 +10,23 @@ export const fetchTopRatedMovies = async (page = 1) => {
   }
   return response.json();
 };
+
+export const fetchPopularMovies = async (page = 1) => {
+  const url = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch popular movies');
+  }
+  return response.json();
+};
+
+export const fetchUpcomingMovies = async (page = 1) => {
+  const url = `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch upcoming movies');
+  }
+  return response.json();
+};

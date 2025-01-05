@@ -1,12 +1,12 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import TopRatedMovies from './screens/TopRatedMovies';
+import Home from './src/screens/Home';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <TopRatedMovies />
+      <Home />
       <StatusBar style="auto" />
     </View>
   );
