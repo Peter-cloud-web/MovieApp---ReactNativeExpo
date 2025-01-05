@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 
-const MovieList = ({ title, data, onPressMovie }) => {
+const MovieList = ({ title, data, onPressMovie, loadMore, isLoading }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
@@ -21,6 +21,11 @@ const MovieList = ({ title, data, onPressMovie }) => {
           </TouchableOpacity>
         )}
         showsHorizontalScrollIndicator={false}
+        onEndReached={loadMore} // Trigger pagination
+        onEndReachedThreshold={0.5} // Load more when 50% of the list is scrolled
+        ListFooterComponent={
+          isLoading ? <ActivityIndicator size="small" color="#0000ff" /> : null
+        }
       />
     </View>
   );
