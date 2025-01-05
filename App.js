@@ -29,14 +29,73 @@ export default function App() {
 
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'tomato',
-          tabBarInactiveTintColor: 'gray',
+          tabBarActiveTintColor: 'tomato', // Active tab color
+          tabBarInactiveTintColor: 'gray', // Inactive tab color
         })}
       >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Favourites" component={Favourites} />
-        <Tab.Screen name="Bookmark" component={Bookmark} />
-        <Tab.Screen name="Settings" component={Settings} />
+        {/* Home Screen with Top Bar Title */}
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{
+            title: 'Movie Store', // Title for the top bar
+            headerStyle: {
+              backgroundColor: 'tomato', // Background color of the top bar
+            },
+            headerTintColor: '#fff', // Text color of the top bar
+            headerTitleStyle: {
+              fontWeight: 'bold', // Bold title
+            },
+          }}
+        />
+
+        {/* Favourites Screen */}
+        <Tab.Screen
+          name="Favourites"
+          component={Favourites}
+          options={{
+            title: 'Favourites', // Title for the top bar
+            headerStyle: {
+              backgroundColor: 'tomato', // Background color of the top bar
+            },
+            headerTintColor: '#fff', // Text color of the top bar
+            headerTitleStyle: {
+              fontWeight: 'bold', // Bold title
+            },
+          }}
+        />
+
+        {/* Bookmark Screen */}
+        <Tab.Screen
+          name="Bookmark"
+          component={Bookmark}
+          options={{
+            title: 'Bookmark', // Title for the top bar
+            headerStyle: {
+              backgroundColor: 'tomato', // Background color of the top bar
+            },
+            headerTintColor: '#fff', // Text color of the top bar
+            headerTitleStyle: {
+              fontWeight: 'bold', // Bold title
+            },
+          }}
+        />
+
+        {/* Settings Screen */}
+        <Tab.Screen
+          name="Settings"
+          component={Settings}
+          options={{
+            title: 'Settings', // Title for the top bar
+            headerStyle: {
+              backgroundColor: 'tomato', // Background color of the top bar
+            },
+            headerTintColor: '#fff', // Text color of the top bar
+            headerTitleStyle: {
+              fontWeight: 'bold', // Bold title
+            },
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
