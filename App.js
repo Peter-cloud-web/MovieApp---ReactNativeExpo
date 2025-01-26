@@ -1,13 +1,49 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons'; // For icons
-import Home from './src/screens/Home';
-import Favourites from './src/screens/Favourites';
-import Bookmark from './src/screens/Bookmark';
-import Settings from './src/screens/Settings';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Ionicons } from '@expo/vector-icons';
+import Home from './screens/Home';
+import Favourites from './screens/Favourites';
+import Bookmark from './screens/Bookmark';
+import Settings from './screens/Settings';
+import MovieDetails from './screens/MovieDetails';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const HomeStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Home"
+      component={Home}
+      options={{
+        title: 'Movie Store',
+        headerStyle: {
+          backgroundColor: '#000',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}
+    />
+    <Stack.Screen
+      name="MovieDetails"
+      component={MovieDetails}
+      options={{
+        title: 'Movie Details',
+        headerStyle: {
+          backgroundColor: '#000',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}
+    />
+  </Stack.Navigator>
+);
 
 export default function App() {
   return (
@@ -29,70 +65,56 @@ export default function App() {
 
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'tomato', // Active tab color
-          tabBarInactiveTintColor: 'gray', // Inactive tab color
+          tabBarActiveTintColor: 'tomato',
+          tabBarInactiveTintColor: 'gray',
         })}
       >
-        {/* Home Screen with Top Bar Title */}
         <Tab.Screen
           name="Home"
-          component={Home}
+          component={HomeStack}
           options={{
-            title: 'Movie Store', // Title for the top bar
-            headerStyle: {
-              backgroundColor: 'tomato', // Background color of the top bar
-            },
-            headerTintColor: '#fff', // Text color of the top bar
-            headerTitleStyle: {
-              fontWeight: 'bold', // Bold title
-            },
+            headerShown: false,
           }}
         />
-
-        {/* Favourites Screen */}
         <Tab.Screen
           name="Favourites"
           component={Favourites}
           options={{
-            title: 'Favourites', // Title for the top bar
+            title: 'Favourites',
             headerStyle: {
-              backgroundColor: 'tomato', // Background color of the top bar
+              backgroundColor: 'tomato',
             },
-            headerTintColor: '#fff', // Text color of the top bar
+            headerTintColor: '#fff',
             headerTitleStyle: {
-              fontWeight: 'bold', // Bold title
+              fontWeight: 'bold',
             },
           }}
         />
-
-        {/* Bookmark Screen */}
         <Tab.Screen
           name="Bookmark"
           component={Bookmark}
           options={{
-            title: 'Bookmark', // Title for the top bar
+            title: 'Bookmark',
             headerStyle: {
-              backgroundColor: 'tomato', // Background color of the top bar
+              backgroundColor: 'tomato',
             },
-            headerTintColor: '#fff', // Text color of the top bar
+            headerTintColor: '#000',
             headerTitleStyle: {
-              fontWeight: 'bold', // Bold title
+              fontWeight: 'bold',
             },
           }}
         />
-
-        {/* Settings Screen */}
         <Tab.Screen
           name="Settings"
           component={Settings}
           options={{
-            title: 'Settings', // Title for the top bar
+            title: 'Settings',
             headerStyle: {
-              backgroundColor: 'tomato', // Background color of the top bar
+              backgroundColor: 'tomato',
             },
-            headerTintColor: '#fff', // Text color of the top bar
+            headerTintColor: '#fff',
             headerTitleStyle: {
-              fontWeight: 'bold', // Bold title
+              fontWeight: 'bold',
             },
           }}
         />
